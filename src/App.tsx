@@ -1,11 +1,11 @@
-import React from 'react';
 import './styles.css';
-import image from './cat.jpeg'
+import Counter from './Counter';
 
 const App = () => {
   return (
     <div>
-      <img src={image} />
+        !
+     <Counter />
     </div>
   );
 };
