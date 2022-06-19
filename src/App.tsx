@@ -1,8 +1,12 @@
 import React from 'react';
+import './styles.css';
+import image from './cat.jpeg'
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <img src={image} />
+    </div>
   );
 };
 
