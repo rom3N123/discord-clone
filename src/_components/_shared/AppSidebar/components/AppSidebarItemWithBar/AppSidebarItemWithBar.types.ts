@@ -3,11 +3,11 @@ import { AppSidebarItemProps } from '_/_components/_shared/AppSidebar/components
 type OnItemClick = (id: string) => void;
 
 interface AppSidebarItemWithBarProps
-	extends Omit<AppSidebarItemProps, 'onClick'> {
-	isActive?: boolean;
-	id: string;
-	onClick: OnItemClick;
-	offsetX?: string;
+    extends Omit<AppSidebarItemProps, 'onClick'> {
+    isActive?: boolean;
+    id: string;
+    onClick: OnItemClick;
+    offsetX?: string;
 }
 
 export type { OnItemClick, AppSidebarItemWithBarProps };

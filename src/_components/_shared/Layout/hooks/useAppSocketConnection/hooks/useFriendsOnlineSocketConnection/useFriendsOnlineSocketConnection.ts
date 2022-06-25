@@ -4,15 +4,15 @@ import UsersOnlineSocketService from '_/_api/_ws/socketServices/UsersOnlineSocke
 import MeStore from '_store/@meStore';
 
 const useFriendsOnlineSocketConnection = () => {
-	useEffect(() => {
-		UsersOnlineSocketService.onIsOnline(({ userId, isOnline }) => {
-			const user = MeStore.friendsById[userId];
+    useEffect(() => {
+        UsersOnlineSocketService.onIsOnline(({ userId, isOnline }) => {
+            const user = MeStore.friendsById[userId];
 
-			if (user) {
-				MeStore.updateFriend(user._id, { ...user, isOnline });
-			}
-		});
-	}, []);
+            if (user) {
+                MeStore.updateFriend(user._id, { ...user, isOnline });
+            }
+        });
+    }, []);
 };
 
 export default useFriendsOnlineSocketConnection;

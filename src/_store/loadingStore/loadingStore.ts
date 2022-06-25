@@ -1,20 +1,20 @@
 import { makeAutoObservable } from 'mobx';
 
 class LoadingStore {
-	public isLoadingWithScreen: boolean = true;
-	public isLoadingWithBar: boolean = false;
+    public isLoadingWithScreen: boolean = true;
+    public isLoadingWithBar: boolean = false;
 
-	constructor() {
-		makeAutoObservable(this);
-	}
+    constructor() {
+        makeAutoObservable(this);
+    }
 
-	public setIsLoadingWithScreen(value: boolean): void {
-		this.isLoadingWithScreen = value;
-	}
+    public setIsLoadingWithScreen(value: boolean): void {
+        this.isLoadingWithScreen = value;
+    }
 
-	public setIsLoadingWithBar(value: boolean): void {
-		this.isLoadingWithBar = value;
-	}
+    public setIsLoadingWithBar(value: boolean): void {
+        this.isLoadingWithBar = value;
+    }
 }
 
 export default new LoadingStore();

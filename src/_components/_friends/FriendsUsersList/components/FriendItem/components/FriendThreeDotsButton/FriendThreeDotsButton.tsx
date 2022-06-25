@@ -6,33 +6,33 @@ import callStore from '_/_store/callStore';
 import * as T from './FriendThreeDotsButton.types';
 
 const FriendThreeDotsButton: FC<T.FriendThreeDotsButtonProps> = ({
-	user,
+    user,
 }): ReactElement => {
-	const onDelete = () => {
-		FriendsSocketService.delete(user._id);
-	};
+    const onDelete = () => {
+        FriendsSocketService.delete(user._id);
+    };
 
-	const onStartCall = () => {
-		callStore.callUser(user);
-	};
+    const onStartCall = () => {
+        callStore.callUser(user);
+    };
 
-	const buttonItems: StyledMenuItemProps[] = [
-		{
-			title: 'Начать видеозвонок',
-			onClick: onStartCall,
-		},
-		{
-			title: 'Начать голосовой звонок',
-			onClick: onStartCall,
-		},
-		{
-			title: 'Удалить из друзей',
-			variant: 'error',
-			onClick: onDelete,
-		},
-	];
+    const buttonItems: StyledMenuItemProps[] = [
+        {
+            title: 'Начать видеозвонок',
+            onClick: onStartCall,
+        },
+        {
+            title: 'Начать голосовой звонок',
+            onClick: onStartCall,
+        },
+        {
+            title: 'Удалить из друзей',
+            variant: 'error',
+            onClick: onDelete,
+        },
+    ];
 
-	return <ThreeDotsButton items={buttonItems} />;
+    return <ThreeDotsButton items={buttonItems} />;
 };
 
 export default FriendThreeDotsButton;

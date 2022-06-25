@@ -28,4 +28,5 @@ module.exports = {
     _ws: resolveAlias('src/_api/_ws'),
     _friends: resolveAlias('src/_components/_friends'),
     _config: resolveAlias('config'),
+    _apis: resolveAlias('src/_api/_apis')
 };

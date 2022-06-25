@@ -1,7 +1,7 @@
 import { OnAppSidebarItemClick } from '../../AppSidebar.types';
 
 type AppSidebarSystemItemsProps = {
-	onItemClick: OnAppSidebarItemClick;
+    onItemClick: OnAppSidebarItemClick;
 };
 
 export type { AppSidebarSystemItemsProps };

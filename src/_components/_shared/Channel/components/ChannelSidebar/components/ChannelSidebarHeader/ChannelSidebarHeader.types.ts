@@ -1,3 +1,3 @@
 export type ChannelSidebarHeaderProps = {
-	name: string;
+    name: string;
 };

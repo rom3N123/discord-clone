@@ -6,24 +6,24 @@ import IconButtonWithTooltip from '../IconButtonWithTooltip';
 import CenteredMenuButton from './components/CenteredMenuButton';
 
 const ButtonWithMenu: FC<T.ButtonWithMenuProps> = ({
-	items,
-	...otherProps
+    items,
+    ...otherProps
 }): ReactElement => {
-	return (
-		<Menu isLazy>
-			<IconButtonWithTooltip
-				variant='dark'
-				as={CenteredMenuButton}
-				{...otherProps}
-			/>
+    return (
+        <Menu isLazy>
+            <IconButtonWithTooltip
+                variant='dark'
+                as={CenteredMenuButton}
+                {...otherProps}
+            />
 
-			<MenuList>
-				{items.map(item => (
-					<StyledMenuItem key={item.title} {...item} />
-				))}
-			</MenuList>
-		</Menu>
-	);
+            <MenuList>
+                {items.map((item) => (
+                    <StyledMenuItem key={item.title} {...item} />
+                ))}
+            </MenuList>
+        </Menu>
+    );
 };
 
 export default ButtonWithMenu;

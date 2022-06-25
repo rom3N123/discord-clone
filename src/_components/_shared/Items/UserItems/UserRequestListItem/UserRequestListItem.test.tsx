@@ -7,37 +7,37 @@ import '@testing-library/jest-dom';
 import { getMockUser } from '_mocks/user.mocks';
 
 const renderItem = () => {
-	const e = () => {};
+    const e = () => {};
 
-	return render(
-		<UserRequestListItem
-			onAcceptClick={e}
-			onCancelClick={e}
-			item={MOCK_FRIEND_REQUEST}
-		/>
-	);
+    return render(
+        <UserRequestListItem
+            onAcceptClick={e}
+            onCancelClick={e}
+            item={MOCK_FRIEND_REQUEST}
+        />
+    );
 };
 
 describe('UserRequestListItem', () => {
-	beforeEach(() => {
-		MeStore.setClient(MOCK_ME);
-	});
+    beforeEach(() => {
+        MeStore.setClient(MOCK_ME);
+    });
 
-	test('Incoming request. Should show accept button', () => {
-		MeStore.user = getMockUser('2');
+    test('Incoming request. Should show accept button', () => {
+        MeStore.user = getMockUser('2');
 
-		const { getByTestId } = renderItem();
+        const { getByTestId } = renderItem();
 
-		const acceptButton = getByTestId('accept-btn');
+        const acceptButton = getByTestId('accept-btn');
 
-		expect(acceptButton).toBeInTheDocument();
-	});
+        expect(acceptButton).toBeInTheDocument();
+    });
 
-	test('Outcoming request. Should hide accept button', () => {
-		const { queryByTestId } = renderItem();
+    test('Outcoming request. Should hide accept button', () => {
+        const { queryByTestId } = renderItem();
 
-		const acceptButton = queryByTestId('accept-btn');
+        const acceptButton = queryByTestId('accept-btn');
 
-		expect(acceptButton).toBeNull();
-	});
+        expect(acceptButton).toBeNull();
+    });
 });

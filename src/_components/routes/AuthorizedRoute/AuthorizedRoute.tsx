@@ -4,9 +4,9 @@ import { Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 
 const AuthorizedRoute: FC<{ children: ReactElement }> = observer(
-	({ children }): ReactElement => {
-		return authStore.isAuth ? children : <Navigate to='/auth' />;
-	}
+    ({ children }): ReactElement => {
+        return authStore.isAuth ? children : <Navigate to='/auth' />;
+    }
 );
 
 export default AuthorizedRoute;

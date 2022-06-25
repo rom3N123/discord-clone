@@ -3,10 +3,10 @@ import {
     AuthLoginByAccessTokenResponse,
     AuthLoginByCredentialsResponse,
     AuthRegisterResponse,
-} from './Auth.http.responses';
+} from '.';
 import { UserCreateDto, UserCredentials } from '@discord-clone/types';
 
-export default class AuthHttpService {
+export default class AuthApi {
     public static loginByCredentials(
         data: UserCredentials
     ): Promise<AuthLoginByCredentialsResponse> {

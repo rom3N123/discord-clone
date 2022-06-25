@@ -4,7 +4,7 @@ import FriendItemActions from './components/FriendItemActions';
 import { FriendItemProps } from './FriendItem.types';
 
 const FriendItem: FC<FriendItemProps> = ({ item }): ReactElement => {
-	return <UserListItem user={item} end={<FriendItemActions user={item} />} />;
+    return <UserListItem user={item} end={<FriendItemActions user={item} />} />;
 };
 
 export default FriendItem;

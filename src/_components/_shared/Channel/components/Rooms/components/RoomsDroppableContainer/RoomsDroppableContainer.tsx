@@ -8,56 +8,56 @@ import { openIconStyle } from './RoomsDroppableContainer.styles';
 import IconButtonWithTooltip from '_/_components/_buttons/IconButtonWithTooltip';
 
 const RoomsDroppableContainer: FC<T.RoomsDroppableContainerProps> = ({
-	label,
-	children,
+    label,
+    children,
 }): ReactElement => {
-	const [areRoomsToggled, toggleRooms] = useToggle(true);
+    const [areRoomsToggled, toggleRooms] = useToggle(true);
 
-	const onPlusClickHandler = (event: MouseEvent) => {
-		event.stopPropagation();
-	};
+    const onPlusClickHandler = (event: MouseEvent) => {
+        event.stopPropagation();
+    };
 
-	return (
-		<Box>
-			<Flex
-				width='100%'
-				as={Button}
-				padding='0 0 0 5px'
-				variant='ghost'
-				color='app.channels.default'
-				onClick={toggleRooms}
-				align='center'
-				justify='space-between'
-			>
-				<Flex align='center' padding='0' flexGrow='1'>
-					<ChevronDownIcon
-						transition='all .1s ease'
-						sx={styleBy(areRoomsToggled, openIconStyle)}
-					/>
+    return (
+        <Box>
+            <Flex
+                width='100%'
+                as={Button}
+                padding='0 0 0 5px'
+                variant='ghost'
+                color='app.channels.default'
+                onClick={toggleRooms}
+                align='center'
+                justify='space-between'
+            >
+                <Flex align='center' padding='0' flexGrow='1'>
+                    <ChevronDownIcon
+                        transition='all .1s ease'
+                        sx={styleBy(areRoomsToggled, openIconStyle)}
+                    />
 
-					<Text
-						color='inherit'
-						fontSize='12px'
-						fontWeight='700'
-						textTransform='uppercase'
-					>
-						{label}
-					</Text>
-				</Flex>
+                    <Text
+                        color='inherit'
+                        fontSize='12px'
+                        fontWeight='700'
+                        textTransform='uppercase'
+                    >
+                        {label}
+                    </Text>
+                </Flex>
 
-				<IconButtonWithTooltip
-					label='Создать канал'
-					color='inherit'
-					onClick={onPlusClickHandler}
-					aria-label='Open menu'
-				>
-					<AddIcon width='12px' height='12px' />
-				</IconButtonWithTooltip>
-			</Flex>
+                <IconButtonWithTooltip
+                    label='Создать канал'
+                    color='inherit'
+                    onClick={onPlusClickHandler}
+                    aria-label='Open menu'
+                >
+                    <AddIcon width='12px' height='12px' />
+                </IconButtonWithTooltip>
+            </Flex>
 
-			<Collapse in={areRoomsToggled}>{children}</Collapse>
-		</Box>
-	);
+            <Collapse in={areRoomsToggled}>{children}</Collapse>
+        </Box>
+    );
 };
 
 export default RoomsDroppableContainer;

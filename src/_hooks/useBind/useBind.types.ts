@@ -3,9 +3,9 @@ import { EmptyFunc } from '_/_types/helperTypes';
 
 type Bind = () => InputBind;
 type UseBindValue = {
-	bind: Bind;
-	value: InputBind['value'];
-	clearValue: EmptyFunc;
+    bind: Bind;
+    value: InputBind['value'];
+    clearValue: EmptyFunc;
 };
 type OnChange = InputBind['onChange'];
 

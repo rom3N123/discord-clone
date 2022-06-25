@@ -1,3 +1,3 @@
 export type AddFriendPageForm = {
-	requestTo: string;
+    requestTo: string;
 };

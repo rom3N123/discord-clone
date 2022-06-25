@@ -1,7 +1,7 @@
 import { FlexProps } from '@chakra-ui/react';
 
 type PageSidebarProps = FlexProps & {
-	indent?: string;
+    indent?: string;
 };
 
 export type { PageSidebarProps };

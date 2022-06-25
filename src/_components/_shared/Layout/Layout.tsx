@@ -6,22 +6,22 @@ import useAppSocketConnection from './hooks/useAppSocketConnection';
 const AppSidebar = lazy(() => import('_shared/AppSidebar'));
 
 const Layout: FC = (): ReactElement => {
-	useAppSocketConnection();
+    useAppSocketConnection();
 
-	return (
-		<Flex
-			bg='app.background.secondary'
-			overflow='hidden'
-			height='100vh'
-			width='100vw'
-		>
-			<AppSidebar />
+    return (
+        <Flex
+            bg='app.background.secondary'
+            overflow='hidden'
+            height='100vh'
+            width='100vw'
+        >
+            <AppSidebar />
 
-			<Box flexGrow='1'>
-				<Outlet />
-			</Box>
-		</Flex>
-	);
+            <Box flexGrow='1'>
+                <Outlet />
+            </Box>
+        </Flex>
+    );
 };
 
 export default Layout;

@@ -4,15 +4,15 @@ import { IconButtonWithTooltipProps } from '../IconButtonWithTooltip/IconButtonW
 import { ChatIcon } from '@chakra-ui/icons';
 
 const MessageButton: FC<IconButtonWithTooltipProps> = (props): ReactElement => {
-	return (
-		<IconButtonWithTooltip
-			withStopPropagation
-			label='Сообщение'
-			variant='dark'
-			icon={<ChatIcon />}
-			{...props}
-		/>
-	);
+    return (
+        <IconButtonWithTooltip
+            withStopPropagation
+            label='Сообщение'
+            variant='dark'
+            icon={<ChatIcon />}
+            {...props}
+        />
+    );
 };
 
 export default MessageButton;

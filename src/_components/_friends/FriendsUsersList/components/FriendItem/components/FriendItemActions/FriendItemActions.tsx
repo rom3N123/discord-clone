@@ -5,15 +5,15 @@ import FriendThreeDotsButton from '../FriendThreeDotsButton';
 import * as T from './FriendItemActions.types';
 
 const FriendItemActions: FC<T.FriendItemActionsProps> = ({
-	user,
+    user,
 }): ReactElement => {
-	return (
-		<Flex align='center' justify='center' gap='5px'>
-			<MessageButton />
+    return (
+        <Flex align='center' justify='center' gap='5px'>
+            <MessageButton />
 
-			<FriendThreeDotsButton user={user} />
-		</Flex>
-	);
+            <FriendThreeDotsButton user={user} />
+        </Flex>
+    );
 };
 
 export default FriendItemActions;

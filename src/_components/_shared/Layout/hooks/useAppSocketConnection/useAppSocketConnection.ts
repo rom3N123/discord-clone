@@ -5,15 +5,15 @@ import useFriendsOnlineSocketConnection from './hooks/useFriendsOnlineSocketConn
 import useFriendsSocketConnection from './hooks/useFriendsSocketConnection';
 
 const useAppSocketConnection = () => {
-	useEffect(() => {
-		appSocket.connect();
-	}, []);
+    useEffect(() => {
+        appSocket.connect();
+    }, []);
 
-	useFriendRequestsSocketConnection();
+    useFriendRequestsSocketConnection();
 
-	useFriendsSocketConnection();
+    useFriendsSocketConnection();
 
-	useFriendsOnlineSocketConnection();
+    useFriendsOnlineSocketConnection();
 };
 
 export default useAppSocketConnection;

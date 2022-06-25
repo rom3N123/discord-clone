@@ -5,27 +5,27 @@ import { UserRequestListItemProps } from '_/_components/_shared/Items/UserItems/
 import * as T from './FriendRequestItem.types';
 
 const FriendRequestItem: FC<T.FriendRequestItemProps> = (
-	props
+    props
 ): ReactElement => {
-	const {
-		item: { _id },
-	} = props;
+    const {
+        item: { _id },
+    } = props;
 
-	const onAcceptClick: UserRequestListItemProps['onAcceptClick'] = () => {
-		FriendRequestsSocketService.accept(_id);
-	};
+    const onAcceptClick: UserRequestListItemProps['onAcceptClick'] = () => {
+        FriendRequestsSocketService.accept(_id);
+    };
 
-	const onCancelClick: UserRequestListItemProps['onCancelClick'] = () => {
-		FriendRequestsSocketService.cancel(_id);
-	};
+    const onCancelClick: UserRequestListItemProps['onCancelClick'] = () => {
+        FriendRequestsSocketService.cancel(_id);
+    };
 
-	return (
-		<UserRequestListItem
-			onAcceptClick={onAcceptClick}
-			onCancelClick={onCancelClick}
-			{...props}
-		/>
-	);
+    return (
+        <UserRequestListItem
+            onAcceptClick={onAcceptClick}
+            onCancelClick={onCancelClick}
+            {...props}
+        />
+    );
 };
 
 export default FriendRequestItem;

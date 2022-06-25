@@ -4,17 +4,17 @@ import UserAvatar from './UserAvatar';
 import { UserAvatarProps } from './UserAvatar.types';
 
 type UserAvatarWithStatusProps = Omit<UserAvatarProps, 'status'> & {
-	user: UserClient;
+    user: UserClient;
 };
 
 const UserAvatarWithStatus: FC<UserAvatarWithStatusProps> = (
-	props
+    props
 ): ReactElement => {
-	const {
-		user: { isOnline },
-	} = props;
+    const {
+        user: { isOnline },
+    } = props;
 
-	return <UserAvatar {...props} status={isOnline ? 'online' : 'offline'} />;
+    return <UserAvatar {...props} status={isOnline ? 'online' : 'offline'} />;
 };
 
 export default UserAvatarWithStatus;

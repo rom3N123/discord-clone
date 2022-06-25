@@ -8,7 +8,7 @@ type AuthRegisterResponse = AxiosResponse<WithAccessToken<MeClient>>;
 type AuthLoginByAccessTokenResponse = AxiosResponse<MeClient>;
 
 export type {
-	AuthLoginByCredentialsResponse,
-	AuthLoginByAccessTokenResponse,
-	AuthRegisterResponse,
+    AuthLoginByCredentialsResponse,
+    AuthLoginByAccessTokenResponse,
+    AuthRegisterResponse,
 };

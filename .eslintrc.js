@@ -60,6 +60,7 @@ module.exports = {
                     ['_skeletons', path.resolve(__dirname, 'src/_skeletons')],
                     ['_ws', path.resolve(__dirname, 'src/_ws')],
                     ['_friends', path.resolve(__dirname, 'src/_components/_friends')],
+                    ['_apis', path.resolve(__dirname, 'src/_api/_apis')],
                 ],
             },
         },

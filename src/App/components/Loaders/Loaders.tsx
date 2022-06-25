@@ -3,12 +3,12 @@ import LoadingBar from '_/_components/loaders/LoadingBar';
 import LoadingScreen from '_/_components/loaders/LoadingScreen';
 
 const Loaders: FC = (): ReactElement => {
-	return (
-		<>
-			<LoadingScreen />
-			<LoadingBar />
-		</>
-	);
+    return (
+        <>
+            <LoadingScreen />
+            <LoadingBar />
+        </>
+    );
 };
 
 export default Loaders;

@@ -1,6 +1,6 @@
 type FormWrapperProps = {
-	title: string;
-	subtitle?: string;
+    title: string;
+    subtitle?: string;
 };
 
 export type { FormWrapperProps };

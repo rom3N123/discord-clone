@@ -6,21 +6,21 @@ import ChannelItem from '_shared/ChannelItem';
 import meStore from '_store/@meStore';
 
 const AppSidebarChannels: FC = observer((): ReactElement => {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	return (
-		<Flex direction='column' gap='10px'>
-			{meStore.channels.map(({ _id, name }) => (
-				<ChannelItem
-					onClick={() => {
-						navigate(`/channel/${_id}`);
-					}}
-					_id={_id}
-					name={name}
-				/>
-			))}
-		</Flex>
-	);
+    return (
+        <Flex direction='column' gap='10px'>
+            {meStore.channels.map(({ _id, name }) => (
+                <ChannelItem
+                    onClick={() => {
+                        navigate(`/channel/${_id}`);
+                    }}
+                    _id={_id}
+                    name={name}
+                />
+            ))}
+        </Flex>
+    );
 });
 
 export default AppSidebarChannels;

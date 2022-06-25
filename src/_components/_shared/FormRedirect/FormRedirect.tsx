@@ -4,26 +4,26 @@ import * as T from './FormRedirect.types';
 import { useNavigate } from 'react-router-dom';
 
 const FormRedirect: FC<T.FormRedirectProps> = ({
-	linkLabel,
-	textLabel,
-	to,
-	...flexProps
+    linkLabel,
+    textLabel,
+    to,
+    ...flexProps
 }): ReactElement => {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	return (
-		<Flex align='center' gap='5px' fontSize='14px' {...flexProps}>
-			<Text color='app.text.muted'>{textLabel}</Text>
+    return (
+        <Flex align='center' gap='5px' fontSize='14px' {...flexProps}>
+            <Text color='app.text.muted'>{textLabel}</Text>
 
-			<Link
-				onClick={() => {
-					navigate(to);
-				}}
-			>
-				{linkLabel}
-			</Link>
-		</Flex>
-	);
+            <Link
+                onClick={() => {
+                    navigate(to);
+                }}
+            >
+                {linkLabel}
+            </Link>
+        </Flex>
+    );
 };
 
 export default FormRedirect;

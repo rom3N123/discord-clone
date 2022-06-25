@@ -3,16 +3,16 @@ import { extendTheme } from '@chakra-ui/react';
 import { colors } from './colors';
 
 const theme = extendTheme({
-	colors,
-	components: {
-		Input,
-		Button,
-		Text,
-		IconButton,
-		Link,
-		Popover,
-		Menu,
-	},
+    colors,
+    components: {
+        Input,
+        Button,
+        Text,
+        IconButton,
+        Link,
+        Popover,
+        Menu,
+    },
 });
 
 export default theme;

@@ -9,19 +9,19 @@ const px: number = 12;
 const padding: string = `${px}px`;
 
 const AppSidebar: FC = (): ReactElement => {
-	const navigate = useNavigate();
+    const navigate = useNavigate();
 
-	const onItemClickHandler: OnNavigationItemClick = item => {
-		navigate(item.route);
-	};
+    const onItemClickHandler: OnNavigationItemClick = (item) => {
+        navigate(item.route);
+    };
 
-	return (
-		<Box height='100%' p={padding} bg='app.background.dark'>
-			<AppSidebarSystemItems onItemClick={onItemClickHandler} />
+    return (
+        <Box height='100%' p={padding} bg='app.background.dark'>
+            <AppSidebarSystemItems onItemClick={onItemClickHandler} />
 
-			<AppSidebarChannels />
-		</Box>
-	);
+            <AppSidebarChannels />
+        </Box>
+    );
 };
 
 export default AppSidebar;

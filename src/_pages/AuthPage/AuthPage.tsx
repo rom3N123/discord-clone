@@ -8,29 +8,29 @@ import RegisterForm from './components/RegisterForm';
 import { AnimatePresence } from 'framer-motion';
 
 const AuthPage: FC = (): ReactElement => {
-	const location = useLocation();
+    const location = useLocation();
 
-	return (
-		<Box
-			height='100vh'
-			width='100vw'
-			backgroundImage={`url(${AuthBg})`}
-			backgroundPosition='center'
-			backgroundSize='cover'
-			backgroundRepeat='no-repeat'
-		>
-			<ScreenFormContainer>
-				<AnimatePresence exitBeforeEnter>
-					<Routes location={location} key={location.pathname}>
-						<Route path='login' element={<LoginForm />} />
-						<Route path='register' element={<RegisterForm />} />
+    return (
+        <Box
+            height='100vh'
+            width='100vw'
+            backgroundImage={`url(${AuthBg})`}
+            backgroundPosition='center'
+            backgroundSize='cover'
+            backgroundRepeat='no-repeat'
+        >
+            <ScreenFormContainer>
+                <AnimatePresence exitBeforeEnter>
+                    <Routes location={location} key={location.pathname}>
+                        <Route path='login' element={<LoginForm />} />
+                        <Route path='register' element={<RegisterForm />} />
 
-						<Route path='*' element={<Navigate to='login' />} />
-					</Routes>
-				</AnimatePresence>
-			</ScreenFormContainer>
-		</Box>
-	);
+                        <Route path='*' element={<Navigate to='login' />} />
+                    </Routes>
+                </AnimatePresence>
+            </ScreenFormContainer>
+        </Box>
+    );
 };
 
 export default AuthPage;

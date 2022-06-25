@@ -4,16 +4,16 @@ import SettingButton from '_/_components/_buttons/SettingButton';
 import { IconButtonItem } from '_/_types/common';
 
 const authUserControllerButtons: IconButtonItem[] = [
-	{
-		Button: MicButton,
-	},
-	{
-		Button: HeadphonesButton,
-	},
-	{
-		Button: SettingButton,
-		tooltip: 'Настройки пользователя',
-	},
+    {
+        Button: MicButton,
+    },
+    {
+        Button: HeadphonesButton,
+    },
+    {
+        Button: SettingButton,
+        tooltip: 'Настройки пользователя',
+    },
 ];
 
 export { authUserControllerButtons };

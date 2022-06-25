@@ -5,13 +5,13 @@ import FriendItem from '_/_components/_friends/FriendsUsersList/components/Frien
 import MeStore from '_/_store/@meStore';
 
 const OnlineFriendsPage: FC = observer((): ReactElement => {
-	return (
-		<FriendsUsersList
-			title='В сети'
-			UserListItem={FriendItem}
-			items={MeStore.onlineFriendsList}
-		/>
-	);
+    return (
+        <FriendsUsersList
+            title='В сети'
+            UserListItem={FriendItem}
+            items={MeStore.onlineFriendsList}
+        />
+    );
 });
 
 export default OnlineFriendsPage;

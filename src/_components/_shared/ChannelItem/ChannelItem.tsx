@@ -6,21 +6,21 @@ import { Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 
 const ChannelItem: FC<T.ChannelItemProps> = ({
-	_id,
-	name,
-	...otherProps
+    _id,
+    name,
+    ...otherProps
 }): ReactElement => {
-	const { channelId } = useParams();
+    const { channelId } = useParams();
 
-	return (
-		<AppSidebarItemWithBar
-			offsetX={APP_SIDEBAR_ACTIVE_BAR_X_OFFSET}
-			isActive={_id === channelId}
-			{...otherProps}
-		>
-			<Text>{name}</Text>
-		</AppSidebarItemWithBar>
-	);
+    return (
+        <AppSidebarItemWithBar
+            offsetX={APP_SIDEBAR_ACTIVE_BAR_X_OFFSET}
+            isActive={_id === channelId}
+            {...otherProps}
+        >
+            <Text>{name}</Text>
+        </AppSidebarItemWithBar>
+    );
 };
 
 export default ChannelItem;

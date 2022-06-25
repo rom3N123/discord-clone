@@ -4,15 +4,15 @@ import { Outlet } from 'react-router-dom';
 import MainPageSidebar from './components/MainPageSidebar';
 
 const MainPage: FC = (): ReactElement => {
-	return (
-		<Flex height='100%'>
-			<MainPageSidebar />
+    return (
+        <Flex height='100%'>
+            <MainPageSidebar />
 
-			<Box flexGrow='1'>
-				<Outlet />
-			</Box>
-		</Flex>
-	);
+            <Box flexGrow='1'>
+                <Outlet />
+            </Box>
+        </Flex>
+    );
 };
 
 export default MainPage;

@@ -24,7 +24,8 @@
 			"_constants/*": ["./_constants/*"],
 			"_skeletons": ["./_components/_skeletons/*"],
 			"_ws": ["./_api/_ws/*"],
-			"_friends": ["./_components/_friends/*"]
+			"_friends": ["./_components/_friends/*"],
+			"_apis/*": ["./_api/_apis/*"]
 		}
 	}
 }
