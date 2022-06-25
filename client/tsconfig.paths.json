@@ -1,0 +1,30 @@
+{
+	"compilerOptions": {
+		"baseUrl": "src",
+		"paths": {
+			"_/*": ["./*"],
+			"_components/*": ["./_components/*"],
+			"_pages/*": ["./_pages/*"],
+			"_hooks/*": ["./_hooks/*"],
+			"_assets/*": ["./_assets/*"],
+			"_types/*": ["./_types/*"],
+			"_shared/*": ["./_components/_shared/*"],
+			"_styles/*": ["./_styles/*"],
+			"_icons/*": ["./_assets/icons/*"],
+			"_hocs/*": ["./hocs/*"],
+			"_buttons/*": ["./_components/_buttons/*"],
+			"_formcontrol/*": ["./_components/_formcontrol/*"],
+			"_helpers/*": ["./_helpers/*"],
+			"_mocks/*": ["./_mocks/*"],
+			"_api/*": ["./_api/*"],
+			"_http/*": ["./_api/_http/*"],
+			"_services/*": ["./_services/*"],
+			"_store/*": ["./_store/*"],
+			"_transitions/*": ["./_components/_transitions/*"],
+			"_constants/*": ["./_constants/*"],
+			"_skeletons": ["./_components/_skeletons/*"],
+			"_ws": ["./_api/_ws/*"],
+			"_friends": ["./_components/_friends/*"]
+		}
+	}
+}
