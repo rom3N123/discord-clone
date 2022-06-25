@@ -1,15 +1,18 @@
-import friends from '@discord-clone/types/src/modules/friends/ws';
 import { appSocket } from '_api/_ws/socketServices/app.socket';
 
+const EMITS = {
+    DELETE: 'delete',
+    DELETED: 'deleted',
+};
+
 export default class FriendsSocketService {
-	public static socket = appSocket;
-	public static emits = friends.EMITS;
+    public static socket = appSocket;
 
-	public static delete(friendId: string) {
-		this.socket.emit(friends.EMITS.DELETE, friendId);
-	}
+    public static delete(friendId: string) {
+        this.socket.emit(EMITS.DELETE, friendId);
+    }
 
-	public static onDelete(callback: (friendId: string) => any) {
-		this.socket.on(friends.EMITS.DELETED, callback);
-	}
+    public static onDelete(callback: (friendId: string) => any) {
+        this.socket.on(EMITS.DELETED, callback);
+    }
 }
