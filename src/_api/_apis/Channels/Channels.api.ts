@@ -1,5 +1,5 @@
 import api from '_http/api';
-import { ChannelsGetResponse, ChannelGetResponse } from './Channels.responses';
+import { ChannelsGetResponse, ChannelGetResponse } from '.';
 
 export default class ChannelsHttpService {
     public static fetchChannels(): Promise<ChannelsGetResponse> {
