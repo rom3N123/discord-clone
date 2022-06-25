@@ -18,4 +18,5 @@
 		"strictPropertyInitialization": false
 	},
 	"include": ["src/**/*"],
+	"extends": "./tsconfig.paths.json"
 }
