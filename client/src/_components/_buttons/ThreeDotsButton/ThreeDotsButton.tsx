@@ -10,7 +10,7 @@ const ThreeDotsButton: FC<ThreeDotsButtonProps> = ({
 }): ReactElement => {
     return (
         <ButtonWithMenu
-            icon={<Icon as={ThreeDotsIcon} w={5} h={5} />}
+            icon={<Icon as={ThreeDotsIcon} h={6} w={6} />}
             items={items}
             {...buttonProps}
         />

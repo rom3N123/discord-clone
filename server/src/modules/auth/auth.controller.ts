@@ -10,27 +10,27 @@ import User from 'src/decorators/UserDecorator/User.decorator';
 
 @Controller('auth')
 export class AuthController {
-  constructor(
-    private readonly authService: AuthService,
-    private readonly meService: MeService,
-  ) {}
+    constructor(
+        private readonly authService: AuthService,
+        private readonly meService: MeService
+    ) {}
 
-  @Post('register')
-  async register(@Body() data: UserCreateDto) {
-    const user = await this.authService.register(data);
+    @Post('register')
+    async register(@Body() data: UserCreateDto) {
+        const user = await this.authService.register(data);
 
-    return user;
-  }
+        return user;
+    }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('login')
-  async loginByToken(@User() { _id }: JwtSignPayloadType) {
-    return this.meService.get(_id);
-  }
+    @UseGuards(JwtAuthGuard)
+    @Get('login')
+    async loginByToken(@User() { _id }: JwtSignPayloadType) {
+        return this.meService.get(_id);
+    }
 
-  @UseGuards(AuthGuard('local'))
-  @Post('login')
-  async login(@User() user: MeClient) {
-    return user;
-  }
+    @UseGuards(AuthGuard('local'))
+    @Post('login')
+    async login(@User() user: MeClient) {
+        return user;
+    }
 }
