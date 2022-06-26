@@ -7,6 +7,7 @@ import { UserCreateDto } from '../user/dto/user-create.dto';
 import { Body, Controller, Post, UseGuards, Get } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import User from 'src/decorators/UserDecorator/User.decorator';
+
 @Controller('auth')
 export class AuthController {
   constructor(
