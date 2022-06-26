@@ -5,13 +5,13 @@ import * as C from './LoginForm.constants';
 import SimpleForm from '_/_components/_formcontrol/SimpleForm';
 import { handleFormRequestErrors } from '_/_components/_formcontrol/SimpleForm/SimpleForm.constants';
 import AppearTransition from '_transitions/AppearTransition';
-import AuthApi from '_apis/Auth/Auth.api';
+import authStore from '_store/authStore';
 
 const LoginForm: FC = (): ReactElement => {
     const onFormSubmit: SubmitHandler<T.LoginFormInputs> = (
         data
     ): Promise<any> => {
-        return AuthApi.loginByCredentials(data);
+        return authStore.loginByCredentials(data);
     };
 
     return (

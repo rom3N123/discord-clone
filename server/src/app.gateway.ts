@@ -11,31 +11,36 @@ import { USERS_ONLINE_EMITS } from './modules/user/entities/users-online/users-o
 @UseGuards(WsGuard)
 @WebSocketGateway({ cors: true })
 export class AppGateway implements OnGatewayDisconnect, OnGatewayConnection {
-  @WebSocketServer()
-  private readonly wss: Server;
+    @WebSocketServer()
+    private readonly wss: Server;
 
-  handleConnection(client: Socket) {
-    const token = client.handshake.headers.token as string;
+    handleConnection(client: Socket) {
+        const token = client.handshake.headers.token as string;
 
-    if (token) {
-      const { _id } = verify(token, 'hello') as JwtSignPayloadType;
+        if (token) {
+            try {
+                const { _id } = verify(token, 'hello') as JwtSignPayloadType;
 
-      usersOnline.store(client.id, _id);
+                usersOnline.store(client.id, _id);
 
-      this.wss.emit(USERS_ONLINE_EMITS.IS_USER_ONLINE(_id), true);
-      this.wss.emit(USERS_ONLINE_EMITS.IS_ONLINE, {
-        userId: _id,
-        isOnline: true,
-      });
+                this.wss.emit(USERS_ONLINE_EMITS.IS_USER_ONLINE(_id), true);
+                this.wss.emit(USERS_ONLINE_EMITS.IS_ONLINE, {
+                    userId: _id,
+                    isOnline: true,
+                });
+            } catch (error) {}
+        }
     }
-  }
 
-  handleDisconnect(client: Socket) {
-    const userId = usersOnline.getUserIdBySocketId(client.id);
+    handleDisconnect(client: Socket) {
+        const userId = usersOnline.getUserIdBySocketId(client.id);
 
-    this.wss.emit(USERS_ONLINE_EMITS.IS_USER_ONLINE(userId), false);
-    this.wss.emit(USERS_ONLINE_EMITS.IS_ONLINE, { userId, isOnline: false });
+        this.wss.emit(USERS_ONLINE_EMITS.IS_USER_ONLINE(userId), false);
+        this.wss.emit(USERS_ONLINE_EMITS.IS_ONLINE, {
+            userId,
+            isOnline: false,
+        });
 
-    usersOnline.deleteBySocketId(client.id);
-  }
+        usersOnline.deleteBySocketId(client.id);
+    }
 }

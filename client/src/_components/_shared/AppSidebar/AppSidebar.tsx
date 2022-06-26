@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Box } from '@chakra-ui/react';
 import { OnNavigationItemClick } from './items/items.types';
 import { useNavigate } from 'react-router-dom';
