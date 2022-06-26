@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import { Box, Fade } from '@chakra-ui/react';
 import { BarLoader } from 'react-spinners';
 import { observer } from 'mobx-react-lite';
-import loadingStore from '_store/loadingStore';
+import { loadingStore } from '_store';
 import { colors } from '_styles/chakra/theme/colors';
 
 const LoadingBar: FC = observer((): ReactElement => {

@@ -3,10 +3,10 @@ import { Flex, Text } from '@chakra-ui/react';
 import UserAvatar from '../UserAvatar';
 import AuthUserControllerButtons from './components/AuthUserControllerButtons';
 import { observer } from 'mobx-react-lite';
-import meStore from '_store/@meStore';
+import { userStore } from '_store';
 
 const AuthUserController: FC = observer((): ReactElement => {
-    const { name } = meStore.user;
+    const { name } = userStore.user;
 
     return (
         <Flex

@@ -5,7 +5,7 @@ import * as C from './LoginForm.constants';
 import SimpleForm from '_/_components/_formcontrol/SimpleForm';
 import { handleFormRequestErrors } from '_/_components/_formcontrol/SimpleForm/SimpleForm.constants';
 import AppearTransition from '_transitions/AppearTransition';
-import authStore from '_store/authStore';
+import { authStore } from '_store';
 
 const LoginForm: FC = (): ReactElement => {
     const onFormSubmit: SubmitHandler<T.LoginFormInputs> = (

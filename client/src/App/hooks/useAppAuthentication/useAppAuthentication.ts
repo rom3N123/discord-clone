@@ -1,6 +1,5 @@
-import loadingStore from '_store/loadingStore';
 import { useEffect } from 'react';
-import authStore from '_store/authStore';
+import { authStore, loadingStore } from '_store';
 
 const useAppAuthentication = () => {
     useEffect(() => {

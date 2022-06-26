@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import FriendsSocketService from '_/_api/_ws/socketServices/FriendsSocketService';
 import ThreeDotsButton from '_/_components/_buttons/ThreeDotsButton';
 import { StyledMenuItemProps } from '_/_components/_shared/StyledMenuItem/StyledMenuItem.types';
-import callStore from '_/_store/callStore';
+import { callStore } from '_store';
 import * as T from './FriendThreeDotsButton.types';
 
 const FriendThreeDotsButton: FC<T.FriendThreeDotsButtonProps> = ({

@@ -1,4 +1,4 @@
-import callStore from '_/_store/callStore';
+import { callStore } from '_store';
 import { CommonIconButton } from '_/_types/common';
 import {
     CameraIcon,

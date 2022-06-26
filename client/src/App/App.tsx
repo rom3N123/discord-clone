@@ -5,7 +5,7 @@ import AuthorizedRoute from '_components/routes/AuthorizedRoute';
 import NonAuthorizedRoute from '_components/routes/NonAuthorizedRoute';
 import useAppAuthentication from './hooks/useAppAuthentication';
 import { observer } from 'mobx-react-lite';
-import loadingStore from '_store/loadingStore';
+import { loadingStore } from '_store';
 import LoadingScreen from '_components/loaders/LoadingScreen';
 import Loaders from './components/Loaders';
 

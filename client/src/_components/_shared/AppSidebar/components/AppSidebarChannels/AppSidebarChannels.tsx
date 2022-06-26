@@ -3,14 +3,14 @@ import { observer } from 'mobx-react-lite';
 import { FC, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ChannelItem from '_shared/ChannelItem';
-import meStore from '_store/@meStore';
+import { channelsStore } from '_store';
 
 const AppSidebarChannels: FC = observer((): ReactElement => {
     const navigate = useNavigate();
 
     return (
         <Flex direction='column' gap='10px'>
-            {meStore.channels.map(({ _id, name }) => (
+            {channelsStore.channels.map(({ _id, name }) => (
                 <ChannelItem
                     onClick={() => {
                         navigate(`/channel/${_id}`);

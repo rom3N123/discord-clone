@@ -1,20 +1,20 @@
 import { useEffect } from 'react';
 import FriendRequestsSocketService from '_api/_ws/socketServices/FriendRequestsSocketService';
-import MeStore from '_store/@meStore';
+import { friendRequestsStore, friendsStore } from '_store';
 
 const useFriendRequestsSocketConnection = () => {
     useEffect(() => {
         FriendRequestsSocketService.onCreated((request) => {
-            MeStore.addFriendRequest(request);
+            friendRequestsStore.addFriendRequest(request);
         });
 
         FriendRequestsSocketService.onCanceled((requestId: string) => {
-            MeStore.deleteFriendRequest(requestId);
+            friendRequestsStore.deleteFriendRequest(requestId);
         });
 
         FriendRequestsSocketService.onAccepted(({ requestId, newFriend }) => {
-            MeStore.deleteFriendRequest(requestId);
-            MeStore.addFriend(newFriend);
+            friendRequestsStore.deleteFriendRequest(requestId);
+            friendsStore.addFriend(newFriend);
         });
     }, []);
 };

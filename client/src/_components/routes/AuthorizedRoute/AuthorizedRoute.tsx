@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import authStore from '_store/authStore';
+import { authStore } from '_store';
 import { Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 

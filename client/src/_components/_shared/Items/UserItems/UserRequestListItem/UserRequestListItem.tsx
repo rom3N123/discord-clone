@@ -3,7 +3,7 @@ import UserListItem from '../UserListItem';
 import * as T from './UserRequestListItem.types';
 import { Flex, Text } from '@chakra-ui/react';
 import { observer } from 'mobx-react-lite';
-import meStore from '_store/@meStore';
+import { meStore, userStore } from '_store';
 import DeleteButton from '_components/_buttons/DeleteButton';
 import AcceptButton from '_components/_buttons/AcceptButton';
 
@@ -15,7 +15,7 @@ const UserRequestListItem: FC<T.UserRequestListItemProps> = observer(
     }): ReactElement => {
         let userToShow = requestTo;
 
-        const isRequestToMe = requestTo._id === meStore.user._id;
+        const isRequestToMe = requestTo._id === userStore.user._id;
 
         if (isRequestToMe) {
             userToShow = requestBy;

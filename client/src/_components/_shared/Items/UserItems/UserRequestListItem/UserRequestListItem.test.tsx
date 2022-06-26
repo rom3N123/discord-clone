@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { MOCK_FRIEND_REQUEST } from '_mocks/user-friend-requests.mocks';
 import UserRequestListItem from './UserRequestListItem';
-import MeStore from '_store/@meStore';
+import { meStore, userStore } from '_store';
 import { MOCK_ME } from '_mocks/me.mocks';
 import '@testing-library/jest-dom';
 import { getMockUser } from '_mocks/user.mocks';
@@ -20,11 +20,11 @@ const renderItem = () => {
 
 describe('UserRequestListItem', () => {
     beforeEach(() => {
-        MeStore.setClient(MOCK_ME);
+        meStore.setClient(MOCK_ME);
     });
 
     test('Incoming request. Should show accept button', () => {
-        MeStore.user = getMockUser('2');
+        userStore.setUser(getMockUser('2'));
 
         const { getByTestId } = renderItem();
 

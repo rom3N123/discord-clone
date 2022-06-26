@@ -4,7 +4,7 @@ import FriendsPageHeader from './components/FriendsPageHeader';
 import { Outlet } from 'react-router-dom';
 import Call from '_/_components/_shared/Call';
 import { observer } from 'mobx-react-lite';
-import callStore from '_/_store/callStore';
+import { callStore } from '_store';
 
 const FriendsPage: FC = observer((): ReactElement => {
     return (

@@ -5,7 +5,7 @@ import * as C from './RegisterForm.constants';
 import { SubmitHandler } from 'react-hook-form';
 import { handleFormRequestErrors } from '_/_components/_formcontrol/SimpleForm/SimpleForm.constants';
 import AppearTransition from '_transitions/AppearTransition';
-import authStore from '_store/authStore';
+import { authStore } from '_store';
 
 const RegisterForm: FC = (): ReactElement => {
     const onRegisterFormSubmit: SubmitHandler<UserCreateDto> = async (data) => {

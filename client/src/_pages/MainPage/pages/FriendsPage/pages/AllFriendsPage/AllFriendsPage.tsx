@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC, ReactElement } from 'react';
 import FriendItem from '_/_components/_friends/FriendsUsersList/components/FriendItem';
-import MeStore from '_/_store/@meStore';
+import { friendsStore } from '_store';
 import FriendsUsersList from '_components/_friends/FriendsUsersList/FriendsUsersList';
 
 const AllFriendsPage: FC = observer((): ReactElement => {
@@ -9,7 +9,7 @@ const AllFriendsPage: FC = observer((): ReactElement => {
         <FriendsUsersList
             title='Друзья'
             UserListItem={FriendItem}
-            items={MeStore.friendsList}
+            items={friendsStore.friendsList}
         />
     );
 });

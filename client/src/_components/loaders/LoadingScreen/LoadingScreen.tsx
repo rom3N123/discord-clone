@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import { Fade, Flex } from '@chakra-ui/react';
 import { observer } from 'mobx-react-lite';
 import { BeatLoader } from 'react-spinners';
-import loadingStore from '_/_store/loadingStore';
+import { loadingStore } from '_store';
 
 const LoadingScreen: FC = observer((): ReactElement | null => {
     if (!loadingStore.isLoadingWithScreen) {
