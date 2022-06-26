@@ -21,4 +21,4 @@ class CallStore {
     }
 }
 
-export default new CallStore();
+export const callStore = new CallStore();

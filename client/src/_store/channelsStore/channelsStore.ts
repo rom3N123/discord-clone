@@ -1,7 +1,7 @@
 import { ChannelClient, ChannelType } from '@discord-clone/types';
 import { makeAutoObservable } from 'mobx';
-import loadingStore from '../loadingStore';
 import ChannelsApi from '_apis/Channels';
+import { loadingStore } from '..';
 
 type ChannelClientType = ChannelClient<ChannelType>;
 
@@ -61,4 +61,4 @@ class ChannelsStore {
     }
 }
 
-export default new ChannelsStore();
+export const channelsStore = new ChannelsStore();

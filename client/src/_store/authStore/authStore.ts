@@ -1,13 +1,11 @@
 import { UserCreateDto, UserCredentials } from '@discord-clone/types';
 import { makeAutoObservable } from 'mobx';
-import MeStore from '../@meStore';
 import AuthApi, {
     AuthLoginByCredentialsResponse,
     AuthLoginByAccessTokenResponse,
     AuthRegisterResponse,
 } from '_apis/Auth';
-import authStore from './authStore';
-import loadingStore from '../loadingStore';
+import { meStore, loadingStore } from '..';
 
 class AuthStore {
     public isAuth: boolean = false;
@@ -18,7 +16,7 @@ class AuthStore {
 
     private saveAuthData(data: AuthLoginByCredentialsResponse['data']): void {
         const { accessToken, user } = data;
-        MeStore.setClient(data);
+        meStore.setClient(data);
         localStorage.token = accessToken;
         localStorage.user = user;
     }
@@ -41,7 +39,7 @@ class AuthStore {
 
             const { data } = response;
 
-            MeStore.setClient(data);
+            meStore.setClient(data);
 
             authStore.isAuth = true;
 
@@ -60,10 +58,10 @@ class AuthStore {
 
         localStorage.token = data.accessToken;
 
-        MeStore.setClient(data);
+        meStore.setClient(data);
 
         return response;
     }
 }
 
-export default new AuthStore();
+export const authStore = new AuthStore();

@@ -1,1 +1,1 @@
-export { default } from './loadingStore';
+export * from './loadingStore';

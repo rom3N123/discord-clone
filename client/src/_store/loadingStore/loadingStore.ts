@@ -17,4 +17,4 @@ class LoadingStore {
     }
 }
 
-export default new LoadingStore();
+export const loadingStore = new LoadingStore();
