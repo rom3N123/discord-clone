@@ -3,13 +3,13 @@ import { UserCreateDto } from '@discord-clone/types';
 import SimpleForm from '_/_components/_formcontrol/SimpleForm';
 import * as C from './RegisterForm.constants';
 import { SubmitHandler } from 'react-hook-form';
-import RegisterAppService from '_services/register/Register.app.service';
 import { handleFormRequestErrors } from '_/_components/_formcontrol/SimpleForm/SimpleForm.constants';
 import AppearTransition from '_transitions/AppearTransition';
+import authStore from '_store/authStore';
 
 const RegisterForm: FC = (): ReactElement => {
     const onRegisterFormSubmit: SubmitHandler<UserCreateDto> = async (data) => {
-        return RegisterAppService.register(data);
+        return authStore.register(data);
     };
 
     return (

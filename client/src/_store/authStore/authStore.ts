@@ -1,9 +1,10 @@
-import { UserCredentials } from '@discord-clone/types';
+import { UserCreateDto, UserCredentials } from '@discord-clone/types';
 import { makeAutoObservable } from 'mobx';
 import MeStore from '../@meStore';
 import AuthApi, {
     AuthLoginByCredentialsResponse,
     AuthLoginByAccessTokenResponse,
+    AuthRegisterResponse,
 } from '_apis/Auth';
 import authStore from './authStore';
 import loadingStore from '../loadingStore';
@@ -50,6 +51,18 @@ class AuthStore {
         } finally {
             loadingStore.setIsLoadingWithScreen(false);
         }
+    }
+
+    async register(fields: UserCreateDto): Promise<AuthRegisterResponse> {
+        const response = await AuthApi.register(fields);
+
+        const { data } = response;
+
+        localStorage.token = data.accessToken;
+
+        MeStore.setClient(data);
+
+        return response;
     }
 }
 
