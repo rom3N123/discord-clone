@@ -1,6 +1,6 @@
 import {
-  UserFriendRequest,
-  UserFriendRequestDocument,
+    UserFriendRequest,
+    UserFriendRequestDocument,
 } from './../../user-friend-requests.schema';
 import { Injectable, HttpStatus, HttpException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -10,83 +10,89 @@ import { UserFriendsService } from '../../../user-friends/user-friends.service';
 
 @Injectable()
 export class UserFriendRequestService {
-  constructor(
-    @InjectModel(UserFriendRequest.name)
-    private readonly userFriendRequestModel: Model<UserFriendRequestDocument>,
-    private readonly userFriendsService: UserFriendsService,
-  ) {}
+    constructor(
+        @InjectModel(UserFriendRequest.name)
+        private readonly userFriendRequestModel: Model<UserFriendRequestDocument>,
+        private readonly userFriendsService: UserFriendsService
+    ) {}
 
-  findOne(id: string) {
-    return this.userFriendRequestModel
-      .findById(id)
-      .populate<UserFriendRequestsPopulateFields>('requestTo requestBy');
-  }
-
-  async accept(requestId: string, userId: string) {
-    const userFriendRequest = await this.userFriendRequestModel.findById(
-      requestId,
-    );
-
-    if (!userFriendRequest) {
-      throw new HttpException("Request wasn't found", HttpStatus.NOT_FOUND);
+    findOne(id: string) {
+        return this.userFriendRequestModel
+            .findById(id)
+            .populate<UserFriendRequestsPopulateFields>('requestTo requestBy');
     }
 
-    if (userId === userFriendRequest.requestTo.toString()) {
-      await userFriendRequest.remove();
+    async accept(requestId: string, userId: string) {
+        const userFriendRequest = await this.userFriendRequestModel.findById(
+            requestId
+        );
 
-      const { requestBy } = userFriendRequest;
+        if (!userFriendRequest) {
+            throw new HttpException(
+                "Request wasn't found",
+                HttpStatus.NOT_FOUND
+            );
+        }
 
-      const { updatedUser, newFriend } = await this.userFriendsService.create(
-        userId,
-        requestBy,
-      );
+        if (userId === userFriendRequest.requestTo.toString()) {
+            await userFriendRequest.remove();
 
-      return {
-        statusCode: HttpStatus.OK,
-        data: {
-          updatedUser,
-          newFriend,
-        },
-      };
-    } else {
-      throw new HttpException(
-        "You can't accept your own request",
-        HttpStatus.BAD_REQUEST,
-      );
-    }
-  }
+            const { requestBy } = userFriendRequest;
 
-  async delete(id: string, userId: string) {
-    const userFriendRequest = await this.userFriendRequestModel.findById(id);
+            const { updatedUser, newFriend } =
+                await this.userFriendsService.create(userId, requestBy);
 
-    if (!userFriendRequest) {
-      throw new HttpException("Request wasn't found", HttpStatus.NOT_FOUND);
-    }
-
-    if (
-      userFriendRequest.requestBy === userId.toString() ||
-      userFriendRequest.requestTo === userId.toString()
-    ) {
-      await userFriendRequest.remove();
-    } else {
-      throw new HttpException(
-        "You don't have permission to cancel this request",
-        HttpStatus.BAD_REQUEST,
-      );
+            return {
+                statusCode: HttpStatus.OK,
+                data: {
+                    updatedUser,
+                    newFriend,
+                },
+            };
+        } else {
+            throw new HttpException(
+                "You can't accept your own request",
+                HttpStatus.BAD_REQUEST
+            );
+        }
     }
 
-    return {
-      status: 'Success',
-      userFriendRequest,
-    };
-  }
+    async delete(id: string, userId: string) {
+        const userFriendRequest = await this.userFriendRequestModel.findById(
+            id
+        );
 
-  async cancel(id: string, userId: string) {
-    await this.delete(id, userId);
+        if (!userFriendRequest) {
+            throw new HttpException(
+                "Request wasn't found",
+                HttpStatus.NOT_FOUND
+            );
+        }
 
-    return {
-      statusCode: HttpStatus.OK,
-      message: 'Request canceled',
-    };
-  }
+        if (
+            userFriendRequest.requestBy === userId.toString() ||
+            userFriendRequest.requestTo === userId.toString()
+        ) {
+            await userFriendRequest.remove();
+        } else {
+            throw new HttpException(
+                "You don't have permission to cancel this request",
+                HttpStatus.BAD_REQUEST
+            );
+        }
+
+        return {
+            status: 'Success',
+            userFriendRequest,
+        };
+    }
+
+    async cancel(id: string, userId: string) {
+        await this.delete(id, userId);
+
+        return {
+            statusCode: HttpStatus.OK,
+            message: 'Request canceled',
+        };
+    }
 }

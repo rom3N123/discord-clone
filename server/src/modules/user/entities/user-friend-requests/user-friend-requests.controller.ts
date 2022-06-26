@@ -8,20 +8,23 @@ import { JwtSignPayloadType } from 'src/modules/auth/types';
 @Controller('user/:userId/friend-requests')
 @UseGuards(JwtAuthGuard)
 export class UserFriendRequestsController {
-  constructor(
-    private readonly userFriendRequestsService: UserFriendRequestsService,
-  ) {}
+    constructor(
+        private readonly userFriendRequestsService: UserFriendRequestsService
+    ) {}
 
-  @Post()
-  create(
-    @Body() { requestTo }: Pick<CreateUserFriendRequestDto, 'requestTo'>,
-    @User() { _id }: JwtSignPayloadType,
-  ) {
-    return this.userFriendRequestsService.create({ requestTo, requestBy: _id });
-  }
+    @Post()
+    create(
+        @Body() { requestTo }: Pick<CreateUserFriendRequestDto, 'requestTo'>,
+        @User() { _id }: JwtSignPayloadType
+    ) {
+        return this.userFriendRequestsService.create({
+            requestTo,
+            requestBy: _id,
+        });
+    }
 
-  @Get()
-  findAll(@User() { _id }: JwtSignPayloadType) {
-    return this.userFriendRequestsService.findAll(_id);
-  }
+    @Get()
+    findAll(@User() { _id }: JwtSignPayloadType) {
+        return this.userFriendRequestsService.findAll(_id);
+    }
 }

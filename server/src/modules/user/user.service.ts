@@ -10,51 +10,47 @@ import { UserClient } from '@discord-clone/types';
 
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
-  ) {}
+    constructor(
+        @InjectModel(User.name) private readonly userModel: Model<UserDocument>
+    ) {}
 
-  async getAll() {
-    return this.userModel.find({});
-  }
+    async getAll() {
+        return this.userModel.find({});
+    }
 
-  async getById(id: string): Promise<UserDocument> {
-    return this.userModel.findById(id).populate('friends');
-  }
+    async getById(id: string): Promise<UserDocument> {
+        return this.userModel.findById(id).populate('friends');
+    }
 
-  async getByIdForClient(id: string): Promise<UserClient> {
-    const user = (await this.userModel
-      .findById(id)
-      .populate('friends')
-      .lean()) as UserClient;
+    async getByIdForClient(id: string): Promise<UserClient> {
+        const user = (await this.userModel
+            .findById(id)
+            .populate('friends')
+            .lean()) as UserClient;
 
-    user.friends = user.friends.map((friend) => ({
-      ...friend,
-      isOnline: usersOnline.getIsOnline(friend._id),
-    }));
+        return user;
+    }
 
-    user.isOnline = usersOnline.getIsOnline(user._id);
+    async create(data: UserCreateDto): Promise<UserDocument> {
+        const { password, ...otherData } = data;
 
-    return user;
-  }
+        const hashedPassword: string = await bcrypt.hash(password, 7);
 
-  async create(data: UserCreateDto): Promise<UserDocument> {
-    const { password, ...otherData } = data;
+        return this.userModel.create({
+            password: hashedPassword,
+            ...otherData,
+        });
+    }
 
-    const hashedPassword: string = await bcrypt.hash(password, 7);
+    async update(id: string, data: UserUpdateDto): Promise<UserDocument> {
+        const updatedUser = await this.userModel.findOneAndUpdate(
+            { _id: id },
+            data,
+            {
+                new: true,
+            }
+        );
 
-    return this.userModel.create({ password: hashedPassword, ...otherData });
-  }
-
-  async update(id: string, data: UserUpdateDto): Promise<UserDocument> {
-    const updatedUser = await this.userModel.findOneAndUpdate(
-      { _id: id },
-      data,
-      {
-        new: true,
-      },
-    );
-
-    return updatedUser;
-  }
+        return updatedUser;
+    }
 }

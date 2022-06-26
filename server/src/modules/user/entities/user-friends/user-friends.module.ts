@@ -5,8 +5,8 @@ import { UserFriendsService } from './user-friends.service';
 import { UserFriendsGateway } from './user-friends.gateway';
 
 @Module({
-  imports: [UserModel],
-  controllers: [UserFriendsController],
-  providers: [UserFriendsService, UserFriendsGateway],
+    imports: [UserModel],
+    controllers: [UserFriendsController],
+    providers: [UserFriendsService, UserFriendsGateway],
 })
 export class UserFriendsModule {}
