@@ -1,5 +1,5 @@
-const alias = require('./config/aliases.ts');
-const path = require('path');
+import alias from './config/aliases.ts';
+import path from 'path';
 
 module.exports = {
     presets: [

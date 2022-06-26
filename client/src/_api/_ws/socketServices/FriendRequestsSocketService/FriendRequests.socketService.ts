@@ -1,5 +1,5 @@
 import { appSocket } from '_api/_ws/socketServices/app.socket';
-import userFriendRequests from '@discord-clone/types/src/modules/user-friend-requests/ws';
+import { FRIEND_REQUESTS_EMITS } from '@discord-clone/types';
 import {
     CreateUserFriendRequestDto,
     UserFriendRequestClient,
@@ -8,28 +8,29 @@ import {
 
 export default class FriendRequestsSocketService {
     public static socket = appSocket;
-    public static emits = userFriendRequests.EMITS;
 
     public static create(
         request: Omit<CreateUserFriendRequestDto, 'requestBy'>
     ): void {
-        this.socket.emit(this.emits.create, request);
+        this.socket.emit(FRIEND_REQUESTS_EMITS.create, request);
     }
     public static accept(requestId: string) {
-        this.socket.emit(this.emits.accept, requestId);
+        this.socket.emit(FRIEND_REQUESTS_EMITS.accept, requestId);
     }
     public static cancel(requestId: string) {
-        this.socket.emit(this.emits.cancel, requestId);
+        this.socket.emit(FRIEND_REQUESTS_EMITS.cancel, requestId);
     }
 
     public static onCreated(
         callback: (request: UserFriendRequestClient) => any
     ) {
-        this.socket.on(this.emits.created, callback);
+        this.socket.on(FRIEND_REQUESTS_EMITS.createSuccess, callback);
     }
+
     public static onCanceled(callback: (requestId: string) => any) {
-        this.socket.on(`friends~canceled`, callback);
+        this.socket.on(FRIEND_REQUESTS_EMITS.cancelSuccess, callback);
     }
+
     public static onAccepted(
         callback: ({
             requestId,
@@ -39,6 +40,6 @@ export default class FriendRequestsSocketService {
             newFriend: UserClient;
         }) => any
     ) {
-        this.socket.on(`friends~accepted`, callback);
+        this.socket.on(FRIEND_REQUESTS_EMITS.acceptSuccess, callback);
     }
 }

@@ -14,21 +14,18 @@ import { Server, Socket } from 'socket.io';
 import { WsGuard } from '../../../auth/ws.guard';
 import User from 'src/decorators/UserDecorator/User.decorator';
 import { usersOnline } from 'src/sockets/UsersOnline';
-
-const namespace = 'user-friend-requests';
+import { FRIEND_REQUESTS_EMITS } from '@discord-clone/types/src/modules';
 
 @UseGuards(WsGuard)
 @WebSocketGateway({ cors: true })
 export class UserFriendRequestGateway {
     @WebSocketServer()
     private readonly wss: Server;
-
     constructor(
         private readonly userFriendRequestsService: UserFriendRequestsService,
         private readonly userFriendRequestService: UserFriendRequestService
     ) {}
-
-    @SubscribeMessage(`${namespace}~create`)
+    @SubscribeMessage(FRIEND_REQUESTS_EMITS.create)
     async create(
         @ConnectedSocket() client: Socket,
         @MessageBody()
@@ -40,21 +37,19 @@ export class UserFriendRequestGateway {
                 requestTo,
                 requestBy: _id,
             });
-
             const socketIds = usersOnline.getSocketsByUsersIds([
                 requestTo,
                 _id,
             ]);
-
             client.emit(`friends~canceled:success`);
-
-            this.wss.to(socketIds).emit(`${namespace}~created`, request);
+            this.wss
+                .to(socketIds)
+                .emit(FRIEND_REQUESTS_EMITS.createSuccess, request);
         } catch (error) {
-            client.emit(`${namespace}-create~error`, error);
+            client.emit(FRIEND_REQUESTS_EMITS.createError, error);
         }
     }
-
-    @SubscribeMessage(`${namespace}~cancel`)
+    @SubscribeMessage(FRIEND_REQUESTS_EMITS.cancel)
     async cancel(
         @ConnectedSocket() client: Socket,
         @MessageBody() requestId: string,
@@ -68,16 +63,14 @@ export class UserFriendRequestGateway {
                     requestTo,
                 },
             } = await this.userFriendRequestService.delete(requestId, _id);
-
             this.wss
                 .to(usersOnline.getSocketsByUsersIds([requestBy, requestTo]))
-                .emit(`friends~canceled`, friendRequestId);
+                .emit(FRIEND_REQUESTS_EMITS.cancelSuccess, friendRequestId);
         } catch (error) {
-            client.emit(`${namespace}-cancel~error`, error);
+            client.emit(FRIEND_REQUESTS_EMITS.cancelError, error);
         }
     }
-
-    @SubscribeMessage(`${namespace}~accept`)
+    @SubscribeMessage(FRIEND_REQUESTS_EMITS.accept)
     async accept(
         @ConnectedSocket() client: Socket,
         @MessageBody() requestId: string,
@@ -87,19 +80,20 @@ export class UserFriendRequestGateway {
             const {
                 data: { newFriend, updatedUser },
             } = await this.userFriendRequestService.accept(requestId, _id);
-
-            client.emit(`friends~accepted`, { requestId, newFriend });
-
+            client.emit(FRIEND_REQUESTS_EMITS.acceptSuccess, {
+                requestId,
+                newFriend,
+            });
             usersOnline.ifOnline(newFriend._id, (socketId) => {
                 this.wss
                     .to(socketId)
-                    .emit(`friends~accepted`, {
+                    .emit(FRIEND_REQUESTS_EMITS.acceptSuccess, {
                         requestId,
                         newFriend: updatedUser,
                     });
             });
         } catch (error) {
-            client.emit(`${namespace}-accept~error`, error);
+            client.emit(FRIEND_REQUESTS_EMITS.acceptError, error);
         }
     }
 }

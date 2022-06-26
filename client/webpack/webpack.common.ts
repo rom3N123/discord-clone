@@ -1,11 +1,13 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const alias = require('../config/aliases.ts');
-require('dotenv').config({ path: '../.env' });
+import * as webpack from 'webpack';
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyPlugin from 'copy-webpack-plugin';
+import alias from '../config/aliases';
+import dotenv from 'dotenv';
 
-module.exports = {
+dotenv.config({ path: '../.env' });
+
+const config: webpack.Configuration = {
     entry: path.resolve(__dirname, '..', './src/index.tsx'),
 
     resolve: {
@@ -18,7 +20,11 @@ module.exports = {
             {
                 test: /\.(js|ts)x?$/,
                 exclude: /node_modules/,
-                use: [{ loader: 'babel-loader' }],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                ],
             },
             {
                 test: /\.css$/,
@@ -44,6 +50,7 @@ module.exports = {
         path: path.resolve(__dirname, '..', './build'),
         filename: 'bundle.js',
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '..', './src/index.html'),
@@ -56,3 +63,5 @@ module.exports = {
         }),
     ],
 };
+
+export default config;

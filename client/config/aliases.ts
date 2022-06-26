@@ -1,8 +1,8 @@
 const path = require('path');
 
-const resolveAlias = (p) => path.resolve(__dirname, '..', p);
+const resolveAlias = (p: string): string => path.resolve(__dirname, '..', p);
 
-module.exports = {
+export default {
     _: resolveAlias('src'),
     _components: resolveAlias('src/_components'),
     _shared: resolveAlias('src/_components/_shared'),
@@ -28,5 +28,5 @@ module.exports = {
     _ws: resolveAlias('src/_api/_ws'),
     _friends: resolveAlias('src/_components/_friends'),
     _config: resolveAlias('config'),
-    _apis: resolveAlias('src/_api/_apis')
+    _apis: resolveAlias('src/_api/_apis'),
 };
