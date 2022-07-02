@@ -1,9 +1,9 @@
 import { appSocket } from '_api/_ws/socketServices/app.socket';
-import { FRIEND_REQUESTS_EMITS } from '@discord-clone/types';
 import {
-    CreateUserFriendRequestDto,
-    UserFriendRequestClient,
     UserClient,
+    UserFriendRequestClient,
+    CreateUserFriendRequestDto,
+    FRIEND_REQUESTS_EMITS,
 } from '@discord-clone/types';
 
 export default class FriendRequestsSocketService {

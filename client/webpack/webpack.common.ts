@@ -43,6 +43,12 @@ const config: webpack.Configuration = {
                 issuer: /\.[jt]sx?$/,
                 use: ['@svgr/webpack'],
             },
+            {
+                test: /\.m?js/,
+                resolve: {
+                    fullySpecified: false,
+                },
+            },
         ],
     },
 
