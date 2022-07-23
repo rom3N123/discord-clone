@@ -14,7 +14,7 @@ import { Server, Socket } from 'socket.io';
 import { WsGuard } from '../../../auth/ws.guard';
 import User from 'src/decorators/UserDecorator/User.decorator';
 import { usersOnline } from 'src/sockets/UsersOnline';
-import { FRIEND_REQUESTS_EMITS } from '@discord-clone/types/src/modules';
+import { FRIEND_REQUESTS_EMITS } from '@discord-clone/types';
 
 @UseGuards(WsGuard)
 @WebSocketGateway({ cors: true })
